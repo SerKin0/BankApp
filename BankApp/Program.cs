@@ -2,16 +2,22 @@ namespace BankApp
 {
     internal static class Program
     {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
+        public static DatabaseManager? DbManager { get; private set; }
+
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
+
+            DbManager = new DatabaseManager("Data Source=bank.db");
+
             Application.Run(new FormStart());
+        }
+
+        // Метод для безопасного доступа
+        public static DatabaseManager GetDbManager()
+        {
+            return DbManager ?? throw new InvalidOperationException("Database manager is not initialized");
         }
     }
 }

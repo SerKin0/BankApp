@@ -4,7 +4,7 @@ namespace BankApp
     {
         public DataUser temp_user;
 
-        public FormLogin(string title="Регистраfdsfция")
+        public FormLogin(string title="Регистрация")
         {
             InitializeComponent();
             labelRegistrationLogin.Text = title;
@@ -33,9 +33,18 @@ namespace BankApp
             //    $"Валидность: {temp_user.Validate}");
             if (temp_user.Validate)
             {
-                // Функция добавления пользователя в БД
-                MessageBox.Show("Пользователь создан удачно!");
-                this.Close();
+                // Обращение на лобавление пользователя в базу данных
+                var db = Program.GetDbManager();
+                try
+                {
+                    db.InsertUser(temp_user);
+                    MessageBox.Show("Пользователь создан удачно!");
+                    this.Close();
+                }
+                catch (ArgumentException)
+                {
+                    MessageBox.Show("Произошла ошибка при добавлении в базу данных");
+                }
             }
             else
             {

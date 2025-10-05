@@ -211,7 +211,7 @@
             labelRegistrationLogin.AutoSize = true;
             labelRegistrationLogin.BackColor = SystemColors.Control;
             labelRegistrationLogin.Font = new Font("JetBrains Mono", 20F, FontStyle.Bold);
-            labelRegistrationLogin.Location = new Point(16, 9);
+            labelRegistrationLogin.Location = new Point(12, 9);
             labelRegistrationLogin.Margin = new Padding(3, 0, 3, 20);
             labelRegistrationLogin.Name = "labelRegistrationLogin";
             labelRegistrationLogin.Size = new Size(191, 36);
