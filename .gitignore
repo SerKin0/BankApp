@@ -1,0 +1,63 @@
+## Игнорирование файлов и папок Visual Studio
+.vs/
+[Bb]in/
+[Oo]bj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.csproj.user
+
+# Файлы кэша Visual Studio
+[Dd]esign[Tt]ime[Bb]uild/
+[Ff]ile[Cc]ontent[Ii]ndex/
+*.vsidx
+*.dtbcache.v2
+
+# Файлы резервных копий и макета
+[Dd]ocument[Ll]ayout.backup.json
+[Dd]ocument[Ll]ayout.json
+
+## Файлы сборки .NET
+*.dll
+*.exe
+*.pdb
+*.cache
+
+# Файлы конфигурации времени выполнения
+*.runtimeconfig.json
+*.deps.json
+
+## Файлы NuGet
+[Nn]uget/
+*.nupkg
+project.assets.json
+project.nuget.cache
+*.nuget.dgspec.json
+*.nuget.g.props
+*.nuget.g.targets
+
+## Временные файлы MSBuild
+*.csproj.BuildWithSkipAnalyzers
+*.csproj.CoreCompileInputs.cache
+*.csproj.FileListAbsolute.txt
+*.csproj.GenerateResource.cache
+*.genruntimeconfig.cache
+
+## Кэши и промежуточные файлы
+*.assets.cache
+*.AssemblyInfo.cs
+*.AssemblyInfoInputs.cache
+.NETCoreApp,Version=v8.0.AssemblyAttributes.cs
+apphost.exe
+
+## Файлы ресурсов (кроме исходных .resx)
+*.resources
+
+## Автогенерируемые файлы
+*.[Gg]lobal[Uu]sings.g.cs
+*.[Gg]eneratedMSBuildEditorConfig.editorconfig
+
+# Исключить папки ref и refint
+*/ref/
+*/refint/
