@@ -2,7 +2,9 @@
 
 public class Checker
 {
-    public static bool checkName(string name) // Имя
+    string phone_pattern_ru = @"^(\+7|7|8)?[\s\-]?\(?[489][0-9]{2}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$";
+
+    public bool checkName(string name) // Имя
     {
         if (string.IsNullOrEmpty(name)) return false;
 
@@ -15,7 +17,7 @@ public class Checker
         return true;
     }
 
-    public static bool ckeckPassportNumber(string number) // Номер паспорта
+    public bool ckeckPassportNumber(string number) // Номер паспорта
     {
         number = number.Replace(" ", "");
 
@@ -26,7 +28,7 @@ public class Checker
         return true;
     }
 
-    public static bool ckeckPassportSeries(string series) // Серия паспорта
+    public bool ckeckPassportSeries(string series) // Серия паспорта
     {
         series = series.Replace(" ", "");
 
@@ -37,10 +39,8 @@ public class Checker
         return true;
     }
 
-    public static bool ckeckPhoneNumber(string phone) // Номер телефона
+    public bool checkPhoneNumber(string phone) // Номер телефона
     {
-        string phone_pattern_ru = @"^(\+7|7|8)?[\s\-]?\(?[489][0-9]{2}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$";
-
         if (string.IsNullOrWhiteSpace(phone)) return false;
 
         phone = phone.Trim();
@@ -50,7 +50,7 @@ public class Checker
         return true;
     }
 
-    public static bool checkCardNumber(string number) // Номер карты
+    public bool checkCardNumber(string number) // Номер карты
     {
         number = number.Replace(" ", "");
 
