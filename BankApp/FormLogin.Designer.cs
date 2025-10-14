@@ -55,7 +55,7 @@
             textBoxLoginSecondName.PlaceholderText = "Иванович";
             textBoxLoginSecondName.Size = new Size(362, 25);
             textBoxLoginSecondName.TabIndex = 1;
-            textBoxLoginSecondName.LostFocus += textBoxLoginSecondName_LostFocus;
+            textBoxLoginSecondName.LostFocus += ValidateLastName;
             // 
             // labelLoginSecondName
             // 
@@ -86,7 +86,7 @@
             textBoxLoginFirstName.PlaceholderText = "Иван";
             textBoxLoginFirstName.Size = new Size(362, 25);
             textBoxLoginFirstName.TabIndex = 4;
-            textBoxLoginFirstName.LostFocus += textBoxLoginFirstName_LostFocus;
+            textBoxLoginFirstName.LostFocus += ValidateFirstName;
             // 
             // textBoxLoginMiddleName
             // 
@@ -97,7 +97,7 @@
             textBoxLoginMiddleName.PlaceholderText = "Иванов";
             textBoxLoginMiddleName.Size = new Size(362, 25);
             textBoxLoginMiddleName.TabIndex = 6;
-            textBoxLoginMiddleName.LostFocus += textBoxLoginMiddleName_LostFocus;
+            textBoxLoginMiddleName.LostFocus += ValidateMiddleName;
             // 
             // labelLoginMiddleName
             // 
@@ -119,7 +119,7 @@
             textBoxLoginNumberPhone.Size = new Size(362, 25);
             textBoxLoginNumberPhone.TabIndex = 8;
             textBoxLoginNumberPhone.TextChanged += textBoxLoginNumberPhone_TextChanged;
-            textBoxLoginNumberPhone.LostFocus += textBoxLoginNumberPhone_LostFocus;
+            textBoxLoginNumberPhone.LostFocus += ValidatePhoneNumber;
             // 
             // labelLoginPhoneNumber
             // 
@@ -140,7 +140,7 @@
             textBoxLoginPassportSeries.PlaceholderText = "0000";
             textBoxLoginPassportSeries.Size = new Size(362, 25);
             textBoxLoginPassportSeries.TabIndex = 10;
-            textBoxLoginPassportSeries.LostFocus += textBoxLoginPassportSeries_LostFocus;
+            textBoxLoginPassportSeries.LostFocus += ValidatePassportSeries;
             // 
             // labelLoginNumberPhone
             // 
@@ -161,7 +161,7 @@
             textBoxLoginPassportNumber.PlaceholderText = "000 000";
             textBoxLoginPassportNumber.Size = new Size(362, 25);
             textBoxLoginPassportNumber.TabIndex = 12;
-            textBoxLoginPassportNumber.LostFocus += textBoxLoginPassportNumber_LostFocus;
+            textBoxLoginPassportNumber.LostFocus += ValidatePassportNumber;
             // 
             // labelLoginPassportNumber
             // 
@@ -184,7 +184,7 @@
             textBoxLoginCardNumber.Size = new Size(362, 25);
             textBoxLoginCardNumber.TabIndex = 14;
             textBoxLoginCardNumber.TextAlign = HorizontalAlignment.Center;
-            textBoxLoginCardNumber.LostFocus += textBoxLoginCardNumber_LostFocus;
+            textBoxLoginCardNumber.LostFocus += ValidateCardNumber;
             // 
             // labelLoginCardNumber
             // 

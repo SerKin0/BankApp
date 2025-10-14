@@ -1,4 +1,6 @@
+using System;
 using System.Runtime.Serialization;
+using System.Windows.Forms;
 
 namespace BankApp
 {
@@ -11,23 +13,78 @@ namespace BankApp
         [STAThread]
         static void Main()
         {
-            ApplicationConfiguration.Initialize();
+            // Минимальное логирование запуска
+            Logger.LogInformation("BankApp запущено");
 
-            DbClient = new DatabaseClient("Data Source=client.db");
-            DbWorker = new DatabaseWorker("Data source=worker.db");
+            try
+            {
+                ApplicationConfiguration.Initialize();
 
-            Application.Run(new FormMain(1));
+                // Инициализация баз данных
+                DbClient = new DatabaseClient("Data Source=client.db");
+                DbWorker = new DatabaseWorker("Data source=worker.db");
+
+                Application.Run(new FormMain(1));
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex, "Критическая ошибка при запуске");
+                MessageBox.Show($"Критическая ошибка: {ex.Message}", "Ошибка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Logger.LogInformation("BankApp завершено");
+                CleanupResources();
+            }
+        }
+
+        private static void CleanupResources()
+        {
+            try
+            {
+                DbClient?.Dispose();
+                DbWorker?.Dispose();
+                Logger.Dispose();
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex, "Ошибка при очистке ресурсов");
+            }
         }
 
         // Метод для безопасного доступа
         public static DatabaseClient GetDbClient()
         {
-            return DbClient ?? throw new InvalidOperationException("Database manager is not initialized");
+            if (DbClient == null)
+            {
+                Logger.LogError("Попытка доступа к неинициализированной БД клиентов");
+                throw new InvalidOperationException("Database manager is not initialized");
+            }
+            return DbClient;
         }
 
         public static DatabaseWorker GetDbWorker()
         {
-            return DbWorker ?? throw new InvalidOperationException("Database manager is not initialized");
+            if (DbWorker == null)
+            {
+                Logger.LogError("Попытка доступа к неинициализированной БД сотрудников");
+                throw new InvalidOperationException("Database manager is not initialized");
+            }
+            return DbWorker;
+        }
+
+        // Метод для логирования смены пользователя
+        public static void LogUserChange(WorkerData? newWorker)
+        {
+            if (newWorker != null)
+            {
+                Logger.LogInformation($"Вход: {newWorker.Login} ({newWorker.Post})");
+            }
+            else
+            {
+                Logger.LogInformation("Выход из системы");
+            }
         }
     }
 }
